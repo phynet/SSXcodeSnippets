@@ -24,8 +24,8 @@
 
 @property (nonatomic, retain) NSString *requestToken;
 @property (nonatomic, retain) NSArray *snippetsPaths;
-@property (nonatomic, retain) NSString *currentSnippetsPath;
 @property (nonatomic, retain) NSString *snippetHash;
+@property (nonatomic, copy) NSString *snippetPathSaved;
 @end
 
 @implementation AppDelegate
@@ -33,7 +33,6 @@
 @synthesize window = _window;
 @synthesize loginButton = _loginButton;
 @synthesize snippetsPaths;
-@synthesize currentSnippetsPath;
 @synthesize textViewSnippets;
 @synthesize requestToken;
 @synthesize retrieveSnippetsButton;
@@ -62,14 +61,17 @@
     [em setEventHandler:self andSelector:@selector(getUrl:withReplyEvent:)
 		  forEventClass:kInternetEventClass andEventID:kAEGetURL];
 
-    if ([[DBSession sharedSession] isLinked]) {
-        [self didPressRetrieveSnippets:nil];
-    }
+	_snippetPathSaved = @"";
+
+//    if ([[DBSession sharedSession] isLinked]) {
+//        [self didPressRetrieveSnippets:nil];
+//    }
 
 }
 #pragma mark button
 
 - (IBAction)didPressRetrieveSnippets:(id)sender {
+
 	self.retrieveSnippetsButton.state = NSOffState;
 
     NSString *snippetsRoot = nil;
@@ -123,8 +125,8 @@
 
 -(void)restClient:(DBRestClient *)client loadedFile:(NSString *)destPath{
 	self.retrieveSnippetsButton.state = NSOnState;
-    self.textViewSnippets.string =  destPath;
-	[self saveToDirectory:destPath];
+//    self.textViewSnippets.string =  destPath;
+//	[self saveToDirectory:destPath];
 }
 
 -(void)restClient:(DBRestClient *)client loadFileFailedWithError:(NSError *)error{
@@ -185,29 +187,11 @@
 
         self.retrieveSnippetsButton.state = NSOnState;
     } else {
-        NSString * snippetPath;
-
-//		if ([self.snippetsPaths count] == 1) {
-//            snippetPath = [self.snippetsPaths objectAtIndex:0];
-//            if ([snippetPath isEqual:self.currentSnippetsPath]) {
-//                NSLog(@"You only have one file to display.");
-//
-//                return;
-//            }
-//        } else {
-//            // Find a random photo that is not the current photo
-//            do {
-//                srandom((int)time(NULL));
-//                NSInteger index =  random() % [self.snippetsPaths count];
-//                snippetPath = [self.snippetsPaths objectAtIndex:index];
-//            } while ([snippetPath isEqual:self.currentSnippetsPath]);
-//        }
-
 
 		for(id val in self.snippetsPaths){
-			snippetPath = val;
-			self.currentSnippetsPath = val;
-			[self.restClient loadFile:self.currentSnippetsPath intoPath:[self snippetsPathDropbox]];
+			_snippetPathSaved = [_snippetPathSaved stringByAppendingString:[NSString stringWithFormat:@"%@ \n\n",val]];
+			self.textViewSnippets.string = _snippetPathSaved;
+			[self saveToDirectory:val];
 		}
 
 

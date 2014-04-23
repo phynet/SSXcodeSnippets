@@ -10,6 +10,8 @@
 #import <DropboxOSX/DropboxOSX.h>
 #import <stdlib.h>
 #import <time.h>
+#import "Constants.h"
+
 
 #define APP_KEY @"exytioa45pbf5of"
 #define APP_SECRET @"pxqyt3gjgu2km7m"
@@ -22,10 +24,12 @@
 -(void)loadSnippets;
 - (DBRestClient *)restClient;
 
+
 @property (nonatomic, retain) NSString *requestToken;
 @property (nonatomic, retain) NSArray *snippetsPaths;
 @property (nonatomic, retain) NSString *snippetHash;
 @property (nonatomic, copy) NSString *snippetPathSaved;
+
 @end
 
 @implementation AppDelegate
@@ -40,34 +44,26 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
-	[self doLogin];
-}
-
--(void)doLogin{
-
-	NSString *appKey = APP_KEY;
-    NSString *appSecret = APP_SECRET;
-    NSString *root = kDBRootDropbox;
-
-    DBSession *session = [[DBSession alloc] initWithAppKey:appKey appSecret:appSecret root:root];
-    [DBSession setSharedSession:session];
-
-
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(authHelperStateChangedNotification:) name:DBAuthHelperOSXStateChangedNotification object:[DBAuthHelperOSX sharedHelper]];
-
-    [self updateLoginButton];
-
-    NSAppleEventManager *em = [NSAppleEventManager sharedAppleEventManager];
-    [em setEventHandler:self andSelector:@selector(getUrl:withReplyEvent:)
-		  forEventClass:kInternetEventClass andEventID:kAEGetURL];
-
+	[self callingService];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(verifyState) name:STATE_CHANGED object:nil];
+	[self updateLoginButton];
 	_snippetPathSaved = @"";
+}
+-(void)callingService
+{
+	ServiceDropBox *service = [[ServiceDropBox alloc] init];
+	[service doLogin];
+}
+-(void)verifyState{
 
-//    if ([[DBSession sharedSession] isLinked]) {
-//        [self didPressRetrieveSnippets:nil];
-//    }
+	[self updateLoginButton];
+    if ([[DBSession sharedSession] isLinked]) {
+        // You can now start using the API!
+        [self didPressRetrieveSnippets:nil];
+    }
 
 }
+
 #pragma mark button
 
 - (IBAction)didPressRetrieveSnippets:(id)sender {
@@ -125,8 +121,6 @@
 
 -(void)restClient:(DBRestClient *)client loadedFile:(NSString *)destPath{
 	self.retrieveSnippetsButton.state = NSOnState;
-//    self.textViewSnippets.string =  destPath;
-//	[self saveToDirectory:destPath];
 }
 
 -(void)restClient:(DBRestClient *)client loadFileFailedWithError:(NSError *)error{
@@ -213,18 +207,5 @@
 	return [NSTemporaryDirectory() stringByAppendingPathComponent:@"1D5E6216-EF26-46D6-BA6B-6ACD7CE0C58B.codesnippet"];
 }
 
-#pragma mark private methods
-
-- (void)authHelperStateChangedNotification:(NSNotification *)notification {
-    [self updateLoginButton];
-    if ([[DBSession sharedSession] isLinked]) {
-        // You can now start using the API!
-        [self didPressRetrieveSnippets:nil];
-    }
-}
-
-- (void)getUrl:(NSAppleEventDescriptor *)event withReplyEvent:(NSAppleEventDescriptor *)replyEvent {
-    // This gets called when the user clicks Show "App name". You don't need to do anything for Dropbox here
-}
 
 @end

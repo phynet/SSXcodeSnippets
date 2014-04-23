@@ -75,6 +75,7 @@
 		074959441907AA0C006D5D28 /* ServiceDropBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ServiceDropBox.h; path = Classes/Service/ServiceDropBox.h; sourceTree = "<group>"; };
 		074959451907AA0C006D5D28 /* ServiceDropBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ServiceDropBox.m; path = Classes/Service/ServiceDropBox.m; sourceTree = "<group>"; };
 		07D515A31907C7BC00A3BE69 /* ServiceProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ServiceProtocol.h; path = Classes/Service/ServiceProtocol.h; sourceTree = "<group>"; };
+		07D515A41907E39200A3BE69 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Constants.h; path = Constants/Constants.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,6 +148,7 @@
 		071E9EA918FD4A2E00AF5E8E /* SSXcodeSnippets */ = {
 			isa = PBXGroup;
 			children = (
+				07D515A41907E39200A3BE69 /* Constants.h */,
 				07D515A21907C79800A3BE69 /* Service */,
 				071E9EB518FD4A2E00AF5E8E /* AppDelegate.h */,
 				071E9EB618FD4A2E00AF5E8E /* AppDelegate.m */,

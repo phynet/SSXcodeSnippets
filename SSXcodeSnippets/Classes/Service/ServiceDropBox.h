@@ -7,7 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <DropboxOSX/DropboxOSX.h>
+#import <stdlib.h>
+#import <time.h>
+#import "ServiceProtocol.h"
 
-@interface ServiceDropBox : NSObject
+@interface ServiceDropBox : NSObject <ServiceProtocol, DBRestClientDelegate>
+
 
 @end

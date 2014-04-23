@@ -9,6 +9,7 @@
 #import <Cocoa/Cocoa.h>
 #import <DropboxOSX/DropboxOSX.h>
 #import <WebKit/WebKit.h>
+#import "ServiceDropBox.h"
 
 @interface AppDelegate : NSObject <NSApplicationDelegate>{
 	DBRestClient *restClient;

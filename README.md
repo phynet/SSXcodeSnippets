@@ -9,10 +9,10 @@ You are free to use and change code (probably it will need to be changed xD)
 
 HOW DOES IT WORK
 ===============
-Press Login button
-A new window page will be prompted in your web browser
-Login with your dropbox account (for now only works wtih my account) ** change this for release next upgrade **
-Allow access to the application
+1. Press Login button
+2. A new window page will be prompted in your web browser
+3. Login with your dropbox account (for now only works wtih my account) ***change this for release next upgrade***
+3. Allow access to the application
 
 In the application window, press "Download Snippets"
 

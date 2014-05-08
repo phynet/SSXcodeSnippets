@@ -13,8 +13,8 @@
 #import "Constants.h"
 
 
-#define APP_KEY @"exytioa45pbf5of"
-#define APP_SECRET @"pxqyt3gjgu2km7m"
+#define APP_KEY @"e3dx8okoyj7owit"
+#define APP_SECRET @"3kxdu28k05j7tuv"
 #define URL_PATH @"~/Library/Developer/Xcode/UserData/CodeSnippets/"
 
 @interface AppDelegate () <DBRestClientDelegate>

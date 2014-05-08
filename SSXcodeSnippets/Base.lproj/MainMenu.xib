@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5053" systemVersion="13C64" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5056" systemVersion="13C64" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5053"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5056"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
@@ -678,9 +678,12 @@
                 <rect key="frame" x="0.0" y="0.0" width="480" height="360"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mEg-Xq-L4k">
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="mEg-Xq-L4k">
                         <rect key="frame" x="314" y="317" width="152" height="32"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="140" id="c6b-rH-FI4"/>
+                        </constraints>
                         <buttonCell key="cell" type="push" title="Do Login" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="XVb-5d-qxC">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
@@ -689,9 +692,12 @@
                             <action selector="didPressLoginDropbox:" target="Voe-Tx-rLC" id="ACw-BL-DOd"/>
                         </connections>
                     </button>
-                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="s0I-bD-z5J">
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="s0I-bD-z5J">
                         <rect key="frame" x="47" y="22" width="148" height="32"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="136" id="lRp-R2-YRw"/>
+                        </constraints>
                         <buttonCell key="cell" type="push" title="Download Snippets" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="VDe-GH-6t6">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
@@ -700,14 +706,14 @@
                             <action selector="didPressRetrieveSnippets:" target="Voe-Tx-rLC" id="IHA-1r-dv1"/>
                         </connections>
                     </button>
-                    <scrollView fixedFrame="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HUT-7w-rMS">
+                    <scrollView horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HUT-7w-rMS">
                         <rect key="frame" x="53" y="161" width="374" height="157"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <clipView key="contentView" ambiguous="YES" misplaced="YES" id="JaT-GU-8Gs">
+                        <clipView key="contentView" id="JaT-GU-8Gs">
                             <rect key="frame" x="1" y="1" width="357" height="155"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
-                                <textView ambiguous="YES" importsGraphics="NO" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" usesFontPanel="YES" verticallyResizable="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" spellingCorrection="YES" smartInsertDelete="YES" id="b2p-mz-Acs">
+                                <textView importsGraphics="NO" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" usesFontPanel="YES" verticallyResizable="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" spellingCorrection="YES" smartInsertDelete="YES" id="b2p-mz-Acs">
                                     <rect key="frame" x="0.0" y="0.0" width="357" height="155"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -729,7 +735,7 @@
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
                     </scrollView>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uOi-HK-BIu">
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="uOi-HK-BIu">
                         <rect key="frame" x="51" y="326" width="147" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Plist Snippets retrieved" id="Y3A-cN-Te1">
@@ -738,7 +744,7 @@
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bMn-5Q-f5i">
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="bMn-5Q-f5i">
                         <rect key="frame" x="51" y="138" width="374" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Remember restart XCode once downloaded the file  to see " id="UUB-Gd-YBT">
@@ -747,7 +753,7 @@
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jaM-hZ-RHn">
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="jaM-hZ-RHn">
                         <rect key="frame" x="56" y="71" width="341" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="~/Library/Developer/Xcode/UserData/CodeSnippets/" id="WfL-99-DJD">
@@ -756,16 +762,16 @@
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7I1-KY-ebN">
-                        <rect key="frame" x="274" y="22" width="132" height="32"/>
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="7I1-KY-ebN">
+                        <rect key="frame" x="274" y="22" width="142" height="32"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="push" title="Upload Snippets" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="HkW-X7-xR8">
+                        <buttonCell key="cell" type="push" title="Upload Snippets" bezelStyle="rounded" alignment="center" enabled="NO" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="HkW-X7-xR8">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
                     </button>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Chw-bK-A1l">
-                        <rect key="frame" x="51" y="87" width="160" height="17"/>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Chw-bK-A1l">
+                        <rect key="frame" x="51" y="87" width="145" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Files will be stored in: " id="lXG-RB-gMo">
                             <font key="font" metaFont="system"/>
@@ -773,9 +779,12 @@
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zPi-YH-8Xl">
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="zPi-YH-8Xl">
                         <rect key="frame" x="51" y="123" width="215" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="211" id="uRS-rY-a42"/>
+                        </constraints>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="your new snippets" id="v5r-qG-1Fn">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -783,6 +792,29 @@
                         </textFieldCell>
                     </textField>
                 </subviews>
+                <constraints>
+                    <constraint firstItem="Chw-bK-A1l" firstAttribute="top" secondItem="zPi-YH-8Xl" secondAttribute="bottom" constant="19" id="4A5-nl-soG"/>
+                    <constraint firstItem="jaM-hZ-RHn" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" constant="58" id="4K1-IA-l60"/>
+                    <constraint firstAttribute="trailing" secondItem="HUT-7w-rMS" secondAttribute="trailing" constant="53" id="61R-ET-NHt"/>
+                    <constraint firstItem="HUT-7w-rMS" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" constant="53" id="Dxr-1g-FgJ"/>
+                    <constraint firstAttribute="trailing" secondItem="mEg-Xq-L4k" secondAttribute="trailing" constant="20" symbolic="YES" id="EJ4-XJ-4Ez"/>
+                    <constraint firstItem="mEg-Xq-L4k" firstAttribute="centerY" secondItem="uOi-HK-BIu" secondAttribute="centerY" id="FOu-3A-z13"/>
+                    <constraint firstItem="bMn-5Q-f5i" firstAttribute="leading" secondItem="uOi-HK-BIu" secondAttribute="leading" id="Fvr-XZ-C1f"/>
+                    <constraint firstItem="bMn-5Q-f5i" firstAttribute="leading" secondItem="Chw-bK-A1l" secondAttribute="leading" id="Szm-us-50K"/>
+                    <constraint firstAttribute="bottom" secondItem="bMn-5Q-f5i" secondAttribute="bottom" constant="138" id="Ui3-RT-hIj"/>
+                    <constraint firstItem="HUT-7w-rMS" firstAttribute="top" secondItem="mEg-Xq-L4k" secondAttribute="bottom" constant="6" id="WTD-wU-O72"/>
+                    <constraint firstItem="bMn-5Q-f5i" firstAttribute="top" secondItem="HUT-7w-rMS" secondAttribute="bottom" constant="6" id="XIg-I0-cqo"/>
+                    <constraint firstItem="7I1-KY-ebN" firstAttribute="leading" secondItem="s0I-bD-z5J" secondAttribute="trailing" constant="91" id="aJ9-zk-T5r"/>
+                    <constraint firstItem="s0I-bD-z5J" firstAttribute="baseline" secondItem="7I1-KY-ebN" secondAttribute="baseline" id="ej0-qJ-K3s"/>
+                    <constraint firstItem="s0I-bD-z5J" firstAttribute="top" secondItem="jaM-hZ-RHn" secondAttribute="bottom" constant="21" id="fNW-wg-BZ8"/>
+                    <constraint firstItem="Chw-bK-A1l" firstAttribute="top" secondItem="bMn-5Q-f5i" secondAttribute="bottom" constant="34" id="ghl-94-Fla"/>
+                    <constraint firstItem="bMn-5Q-f5i" firstAttribute="leading" secondItem="zPi-YH-8Xl" secondAttribute="leading" id="jV5-Zc-XFB"/>
+                    <constraint firstItem="HUT-7w-rMS" firstAttribute="top" secondItem="mEg-Xq-L4k" secondAttribute="bottom" constant="6" id="oOu-cY-lgI"/>
+                    <constraint firstAttribute="bottom" secondItem="s0I-bD-z5J" secondAttribute="bottom" constant="29" id="u10-Y8-rBD"/>
+                    <constraint firstItem="bMn-5Q-f5i" firstAttribute="leading" secondItem="s0I-bD-z5J" secondAttribute="leading" id="ui9-RF-ybQ"/>
+                    <constraint firstItem="mEg-Xq-L4k" firstAttribute="top" secondItem="EiT-Mj-1SZ" secondAttribute="top" constant="15" id="wcO-8v-Ts4"/>
+                    <constraint firstItem="bMn-5Q-f5i" firstAttribute="leading" secondItem="HUT-7w-rMS" secondAttribute="leading" id="xM6-dl-xg5"/>
+                </constraints>
             </view>
         </window>
     </objects>

@@ -101,7 +101,6 @@
 		071E9E9718FD4A2E00AF5E8E = {
 			isa = PBXGroup;
 			children = (
-				071E9EE218FD842200AF5E8E /* DropboxOSX.framework */,
 				071E9EA918FD4A2E00AF5E8E /* SSXcodeSnippets */,
 				071E9EC718FD4A2F00AF5E8E /* SSXcodeSnippetsTests */,
 				071E9EA218FD4A2E00AF5E8E /* Frameworks */,
@@ -121,6 +120,7 @@
 		071E9EA218FD4A2E00AF5E8E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				071E9EE218FD842200AF5E8E /* DropboxOSX.framework */,
 				071E9EDE18FD833600AF5E8E /* Security.framework */,
 				071E9EDC18FD7AF600AF5E8E /* WebKit.framework */,
 				071E9EDA18FD779D00AF5E8E /* DropboxOSX.framework */,

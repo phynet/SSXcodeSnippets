@@ -51,8 +51,7 @@
 }
 -(void)callingService
 {
-	ServiceDropBox *service = [[ServiceDropBox alloc] init];
-	[service doLogin];
+	[self doLogin];
 }
 -(void)verifyState{
 
@@ -61,7 +60,6 @@
         // You can now start using the API!
         [self didPressRetrieveSnippets:nil];
     }
-
 }
 
 #pragma mark button
@@ -87,7 +85,10 @@
         restClient = nil;
         [self updateLoginButton];
     } else {
-        [[DBAuthHelperOSX sharedHelper] authenticate];
+
+   	  [[DBAuthHelperOSX sharedHelper] authenticate];
+
+
     }
 
 }
@@ -116,6 +117,12 @@
 
 - (void)restClient:(DBRestClient*)client loadMetadataFailedWithError:(NSError*)error {
     NSLog(@"restClient:loadMetadataFailedWithError: %@", error);
+	if(error.code == 403){
+		NSAlert *alert = [[NSAlert alloc]init];
+		[alert setMessageText:@"Log in"];
+		[alert setInformativeText:@"Is necessary that you login again"];
+		[alert runModal];
+	}
     self.retrieveSnippetsButton.state = NSOnState;
 }
 
@@ -133,8 +140,25 @@
     NSLog(@"File loaded into path: %@", localPath);
 }
 
+- (DBRestClient *)restClient {
+    if (!restClient) {
+        restClient = [[DBRestClient alloc] initWithSession:[DBSession sharedSession]];
+        restClient.delegate = self;
+    }
+    return restClient;
+}
+- (void)displayError {
+	NSAlert *alert = [[NSAlert alloc]init];
+	[alert setMessageText:@"Error"];
+	[alert setInformativeText:@"There was an error loading your snippets."];
+	[alert runModal];
+}
+-(NSString*)snippetsPathDropbox{
+	return [NSTemporaryDirectory() stringByAppendingPathComponent:@"1D5E6216-EF26-46D6-BA6B-6ACD7CE0C58B.codesnippet"];
+}
 
 #pragma mark save codesnipet  
+
 -(void)saveToDirectory:(NSString*)path
 {
 
@@ -187,24 +211,38 @@
 			self.textViewSnippets.string = _snippetPathSaved;
 			[self saveToDirectory:val];
 		}
-
-
-
     }
 
 }
-- (DBRestClient *)restClient {
-    if (!restClient) {
-        restClient = [[DBRestClient alloc] initWithSession:[DBSession sharedSession]];
-        restClient.delegate = self;
-    }
-    return restClient;
+
+#pragma  mark service
+
+
+-(void)doLogin{
+
+	NSString *appKey = APP_KEY;
+    NSString *appSecret = APP_SECRET;
+    NSString *root = kDBRootDropbox;
+
+    DBSession *session = [[DBSession alloc] initWithAppKey:appKey appSecret:appSecret root:root];
+    [DBSession setSharedSession:session];
+
+
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(authHelperStateChangedNotification:) name:DBAuthHelperOSXStateChangedNotification object:[DBAuthHelperOSX sharedHelper]];
+
+
+    NSAppleEventManager *em = [NSAppleEventManager sharedAppleEventManager];
+    [em setEventHandler:self andSelector:@selector(getUrl:withReplyEvent:)
+		  forEventClass:kInternetEventClass andEventID:kAEGetURL];
+
 }
-- (void)displayError {
-    NSLog(@"There was an error loading your snippets.");
+
+- (void)authHelperStateChangedNotification:(NSNotification *)notification {
+	[[NSNotificationCenter defaultCenter] postNotificationName:STATE_CHANGED object:nil];
+
 }
--(NSString*)snippetsPathDropbox{
-	return [NSTemporaryDirectory() stringByAppendingPathComponent:@"1D5E6216-EF26-46D6-BA6B-6ACD7CE0C58B.codesnippet"];
+- (void)getUrl:(NSAppleEventDescriptor *)event withReplyEvent:(NSAppleEventDescriptor *)replyEvent {
+    // This gets called when the user clicks Show "App name". You don't need to do anything for Dropbox here
 }
 
 

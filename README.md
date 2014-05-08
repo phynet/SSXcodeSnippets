@@ -19,12 +19,12 @@ In the application window, press "Download Snippets"
 
 BUGS:
 ===============
-Apparently there is a bug with dropbox. When downloading snippets Dropboxs puts a text at the end of the code, so XCode reads as a duplicate and closes. *Something to fix soon.*
+Apparently there is a bug with dropbox. When downloading snippets Dropboxs puts a text at the end of the code, so XCode reads as a duplicate and closes. ***Something to fix soon.***
 
 
 TO DO:
 ===============
-- Release for production (is only for development)
+- Release for production (is only for development right now)
 - UPLOAD to Dropbox (when Dropbox release the option ;] )
 - Separate classes. Taking out classes from appDelegate ¬¬ 
 - Logo 

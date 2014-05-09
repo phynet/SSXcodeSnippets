@@ -1,25 +1,23 @@
 SSXcodeSnippets
 ===============
 
-This is NOT a complete project YET...needs fixes soon to be resolved.
-
-The main objective of this application is to upload and download customized snippets to your account in Dropbox into XCode Snippets area.
+The main objective of this application is to download customized snippets from your account in Dropbox into XCode Snippets folder.
 Sure, there are other apps out there using github instead of dropbox which are very cool. But I think I may use my own app to work with snippets. 
-You are free to use and change code (probably it will need to be changed xD)
+You are free to use and change code (probably it will need to be changed and improved xD)
 
 HOW DOES IT WORK
 ===============
-1. Press Login button
-2. A new window page will be prompted in your web browser
-3. Login with your dropbox account (for now only works wtih my account) ***change this for release next upgrade***
-3. Allow access to the application
-
-In the application window, press "Download Snippets"
-
+1. Create a folder in your root Dropbox account called: Snippets
+2. Open this application
+3. Press "Login button"
+4. A new window page will be prompted in your web browser
+5. Login with your dropbox account 
+6. Allow access to the application
+7. The application will download all snippets immediately when you login, but if you were already logged, press "Download Snippets"
 
 BUGS:
 ===============
-Apparently there is a bug with dropbox. When downloading snippets Dropboxs puts a text at the end of the code, so XCode reads as a duplicate and closes. ***Something to fix soon.***
+
 
 
 TO DO:

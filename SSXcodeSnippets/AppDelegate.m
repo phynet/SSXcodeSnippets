@@ -17,6 +17,9 @@
 #define APP_SECRET @"3kxdu28k05j7tuv"
 #define URL_PATH @"~/Library/Developer/Xcode/UserData/CodeSnippets/"
 
+
+//TO DO: cuando ya se tenga el archivo en snippets, no copiarlo de nuevo (aparentemente el reemplazo no está funcionando correctamente y xcode piensa que está duplicado)
+
 @interface AppDelegate () <DBRestClientDelegate>
 
 -(void)updateLoginButton;
@@ -119,7 +122,7 @@
     NSLog(@"restClient:loadMetadataFailedWithError: %@", error);
 	if(error.code == 403){
 		NSAlert *alert = [[NSAlert alloc]init];
-		[alert setMessageText:@"Log in"];
+		[alert setMessageText:@"Login"];
 		[alert setInformativeText:@"Is necessary that you login again"];
 		[alert runModal];
 	}
@@ -184,9 +187,9 @@
 
 -(void)updateLoginButton{
 	if ([[DBSession sharedSession] isLinked]) {
-        self.loginButton.title = @"Log Out Dropbox";
+        self.loginButton.title = @"Logout Dropbox";
     } else {
-        self.loginButton.title = @"Log In Dropbox";
+        self.loginButton.title = @"Login Dropbox";
         self.loginButton.state = [[DBAuthHelperOSX sharedHelper] isLoading] ? NSOffState : NSOnState;
     }
 }

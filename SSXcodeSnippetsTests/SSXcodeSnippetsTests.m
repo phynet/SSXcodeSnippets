@@ -3,7 +3,7 @@
 //  SSXcodeSnippetsTests
 //
 //  Created by sofiaswidarowicz on 15/04/14.
-//  Copyright (c) 2014 Media Net. All rights reserved.
+//  Copyright (c) 2014 phyline. All rights reserved.
 //
 
 #import <XCTest/XCTest.h>
